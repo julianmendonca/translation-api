@@ -14,16 +14,20 @@ app.get("/translate", async (req, res) => {
 app.listen(port);
 
 const makeRequest = async (text) => {
-  const translated = await translatte(text, { to: "es" })
-    .then((res) => {
-      console.log(res.text);
-      return res.text;
-    })
-    .catch((err) => {
-      console.error(err);
-      return "";
-    });
-  return translated;
+  if (text !== undefined) {
+    const translated = await translatte(text, { to: "es" })
+      .then((res) => {
+        console.log(res.text);
+        return res.text;
+      })
+      .catch((err) => {
+        console.error(err);
+        return "";
+      });
+    return translated;
+  } else {
+    return "";
+  }
 };
 
 makeRequest();
