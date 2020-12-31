@@ -1,7 +1,9 @@
 const translatte = require("translatte");
+const cors = require("cors");
 var express = require("express");
 let port = process.env.PORT || 3000;
 var app = express();
+app.use(cors());
 app.get("/translate", async (req, res) => {
   const text = req.query.text;
   console.log(text);
