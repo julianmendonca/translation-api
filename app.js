@@ -1,5 +1,6 @@
 const translatte = require("translatte");
 var express = require("express");
+let port = process.env.PORT || 3000;
 var app = express();
 app.get("/translate", async (req, res) => {
   const text = req.query.text;
@@ -10,7 +11,7 @@ app.get("/translate", async (req, res) => {
   //res.send(text);
 });
 
-app.listen(3000);
+app.listen(port);
 
 const makeRequest = async (text) => {
   const translated = await translatte(text, { to: "es" })
